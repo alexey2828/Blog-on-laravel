@@ -39,27 +39,16 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-
 Route::get('/home', function () {
 	$tasks = DB::table('tasks')->get();
     return view('/home', compact('tasks'));
 });
 
-
 Route::get('/role_user','Controller@role_user');
-
-
 
 //slug
 
 Route::get('task/{id}', 'IndexController@show')->name('tasksShow');
-
-//more routes
-
-Route::get('/Xiaomi', 'IndexController@Xiaomi')->name('Xiaomi');
-Route::get('/Meizu', 'IndexController@Meizu')->name('Meizu');
-
-
 
 Route::redirect('/', '/welcome');
 
@@ -82,7 +71,6 @@ Route::post('/home','Controller@insertHome');
 Route::post('/search_result','Controller@searchPost');
 Route::post('/home','Controller@searchPost');
 
-
 //delete
 
 Route::get('delete/{id}','Controller@deletePost');
@@ -96,19 +84,15 @@ Route::get('task/categorie/{categorie_id}', 'IndexController@categorie_id')->nam
 Route::get('/insertForm',['as' => 'upload_form', 'uses' => 'UploadController@getForm']);
 Route::post('/insertForm',['as' => 'upload_file','uses' => 'UploadController@upload']);
 
-//проверка статьи 
-
-//Route::get('insert/{id}','IndexController@verified_post');
-
 //upload avatar
 
 Route::get('/ff', ['as' => 'upload_avatar', 'uses' => 'UploadController@getFormAvatr']);
 Route::post('/ff',['as' => 'upload_avatars','uses' => 'UploadController@uploadAvatar']);
 
-//
+//link on users page
 Route::get('/users', function () {
 	$users = DB::table('users')->get();
     return view('/users', compact('users'));
 });
-
+//users slug
 Route::get('user/{id}', 'IndexController@usershow')->name('usersShow');
