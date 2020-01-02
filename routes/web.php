@@ -27,14 +27,6 @@ Route::get('/tasks', function () {
     return view('/tasks', compact('tasks'));
 });
 
-
-
-
-//Route::get('/', function () {
-//	$tasks = DB::table('tasks')->get();
-//    return view('/home', compact('tasks'));
-//});
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -52,19 +44,11 @@ Route::get('task/{id}', 'IndexController@show')->name('tasksShow');
 
 Route::redirect('/', '/welcome');
 
-//pagination
-
-Route::get('/Honor', function () {
-	$tasks = DB::table('tasks')->paginate(8);
-    return view('/Honor', compact('tasks'));
-});
-Route::post('/insertForm','Controller@insert');
-
 //insert
 
-//Route::post('/Honor','Controller@insert');
+Route::post('/insertForm','Controller@insert');
 Route::post('/home','Controller@insertHome');
-//Route::redirect('/insertForm', '/welcome');
+
 
 //search
 
